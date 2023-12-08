@@ -6,13 +6,12 @@ from io import StringIO
 from sklearn.metrics.pairwise import euclidean_distances
 import time
 
-
 st.sidebar.title("Models for Data")
 
 options = ['Home', 'Linear Regression', 'Kmeans']
 side_menu = st.sidebar.radio("Side menu widgets", options, label_visibility="hidden")
 
-#if side_menu
+# Home Page
 
 if side_menu == 'Home':
 	st.title("Data Organizer and Analyzer")
@@ -26,6 +25,11 @@ if side_menu == 'Home':
 		dataframe = pd.read_csv(uploaded_file)
 		st.session_state['data'] = dataframe	
 		dataframe 
+
+	st.divider()
+	st.write("This program is useful for analyzing and organizing data in one place.")
+
+# Linear Regression Page
 
 if side_menu == 'Linear Regression':
 	st.title('Linear Regression')
@@ -49,6 +53,8 @@ if side_menu == 'Linear Regression':
 		plt.plot(x, y, 'ok')
 		plt.plot(x, y_hat)
 		st.pyplot(plt)
+
+# Kmeans Class
 
 class kmeans:
     """ The k-Means algorithm"""
@@ -96,6 +102,8 @@ class kmeans:
         self.within_cluster_variation()
         labels = self.data[:,0]
         return labels, self.centroids
+
+# Kmeans Page
 
 if side_menu == 'Kmeans':
 	st.title('Kmeans Clustering')
