@@ -23,8 +23,12 @@ if side_menu == 'Home':
 	if uploaded_file is not None:
 
 		dataframe = pd.read_csv(uploaded_file)
+		
 		st.session_state['data'] = dataframe	
-		dataframe 
+	if 'data' not in st.session_state:
+		"Couldn't find data, please try again."
+	else:
+		st.session_state['data']
 
 	st.divider()
 	st.write("This program is useful for analyzing and organizing data in one place.")
@@ -42,6 +46,7 @@ if side_menu == 'Linear Regression':
 
 		x = data[st.selectbox('Set x label', features)]
 		y = data[st.selectbox('Set y label', features)]
+
 
 		ones = np.ones(data.shape[0])
 		X = np.vstack([[x], [ones]]).T
@@ -118,13 +123,19 @@ if side_menu == 'Kmeans':
 		y_label = st.selectbox('Set y label', features)
 		x = data[x_label]
 		y = data[y_label]
+		if x.dtype == "object":
+
+		
+		x_u = pd.unique(x)
+		y_u = pd.unique(y)
+		x_u.shape[0]
 		
 		features = np.vstack([[x], [y]]).T
 
 		c = st.number_input("Number of Classes", value=3)
 
 		km = kmeans(c, features)
-		labels, centroids = km.cluster(10)
+		labels, centroids = km.cluster(5)
 		c0 = data[labels==0]
 		c1 = data[labels==1]
 		c2 = data[labels==2]
@@ -135,7 +146,6 @@ if side_menu == 'Kmeans':
 		plt.plot(centroids[0,0], centroids[0,1], 'ob')
 		plt.plot(centroids[1,0], centroids[1,1], 'or')
 		plt.plot(centroids[2,0], centroids[2,1], 'og')
-		plt.title("Initial clusters")
 		plt.xlabel(x_label)
 		plt.ylabel(y_label)
 		st.pyplot(plt)
