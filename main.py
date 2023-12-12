@@ -116,12 +116,11 @@ if side_menu == 'Logistic Regression':
 
 		probabilities = sig(np.dot(X, beta))
 
-
 		sorted_indices = np.argsort(x)
 		x_sorted = x.iloc[sorted_indices]
 		probabilities_sorted = probabilities[sorted_indices]
 
-		plt.scatter(x, y, color='black', marker='o', label='Actual')
+		plt.scatter(x, y, color='black', marker='o', label='Actual', alpha=0.6)
 		plt.plot(x_sorted, probabilities_sorted, color='blue', label='Predicted Probabilities')
 		plt.xlabel(x_label)
 		plt.ylabel(y_label)
