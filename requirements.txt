@@ -292,7 +292,6 @@ rope @ file:///Users/cbousseau/work/recipes/ci_py311/rope_1677934821109/work
 Rtree @ file:///Users/cbousseau/work/recipes/ci_py311/rtree_1677961892694/work
 ruamel-yaml-conda @ file:///Users/cbousseau/work/recipes/ci_py311/ruamel_yaml_1677961911260/work
 ruamel.yaml @ file:///Users/cbousseau/work/recipes/ci_py311/ruamel.yaml_1677934845850/work
-s3fs @ file:///private/var/folders/nz/j6p8yfhx1mv_0grj5xl4650h0000gp/T/abs_94qu8izf0w/croot/s3fs_1682551484893/work
 sacremoses @ file:///tmp/build/80754af9/sacremoses_1633107328213/work
 scikit-image @ file:///private/var/folders/nz/j6p8yfhx1mv_0grj5xl4650h0000gp/T/abs_12rg0hdzgk/croot/scikit-image_1682528304529/work
 scikit-learn==1.3.2
