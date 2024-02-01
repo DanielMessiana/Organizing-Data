@@ -11,6 +11,9 @@ from sklearn.metrics import classification_report, confusion_matrix, accuracy_sc
 from sklearn import preprocessing 
 import time
 
+def sig(x):
+	return 1 / (1 + np.exp(-x))
+
 st.sidebar.title("Models for Data")
 
 options = ['Home', 'Linear Regression', 'Logistic Regression', 'Kmeans']
@@ -70,7 +73,7 @@ if side_menu == 'Linear Regression':
 		beta_hat = np.linalg.pinv(X.T @ X + 0.001 * np.eye(X.shape[1])) @ X.T @ y.T
 		y_hat = np.dot(X, beta_hat)
 
-		plt.plot(x, y, 'ok', alpha=0.6)
+		plt.plot(x, y, 'ok', alpha=0.7)
 		plt.plot(x, y_hat)
 		plt.xlabel(x_label)
 		plt.ylabel(y_label)
@@ -94,9 +97,6 @@ if side_menu == 'Logistic Regression':
 		X = np.vstack([x, ones]).T
 
 		beta = np.zeros(X.shape[1])
-
-		def sig(x):
-			return 1 / (1 + np.exp(-x))
 
 		def cost_function(X, y, beta):
 			z = np.dot(X, beta)
